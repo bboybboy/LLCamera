@@ -14,7 +14,7 @@
 
 #import <AssetsLibrary/AssetsLibrary.h>
 
-#define previewFrame (CGRect){ 0, 65, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height - 138 }
+#define previewFrame (CGRect){ 0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height }
 
 // pinch
 #define MAX_PINCH_SCALE_NUM   3.f
