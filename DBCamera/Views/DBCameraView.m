@@ -79,17 +79,22 @@
     exposeView.backgroundColor = [UIColor clearColor];
     [exposeView.layer addSublayer:self.exposeBox];
     [self addSubview:exposeView];
+    
+    UIView *containerView = [[UIView alloc]initWithFrame:CGRectMake(0, self.frame.size.height - 150, self.frame.size.width, 150)];
+    containerView.backgroundColor = [UIColor clearColor];
+    [self addSubview:containerView];
+    
+    UIView *roundedView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 50)];
+    roundedView.center = CGPointMake(containerView.frame.size.width / 2, containerView.frame.size.height / 2);
+    roundedView.backgroundColor = [UIColor colorWithWhite:0 alpha:.5];
+    roundedView.layer.cornerRadius = 25;
+    [containerView addSubview:roundedView];
+    
+    self.triggerButton.center = CGPointMake(containerView.frame.size.width / 2, containerView.frame.size.height / 2);
+    self.gridButton.center = CGPointMake(containerView.frame.size.width / 2 - 70, containerView.frame.size.height / 2);
 
-    [self addSubview:self.topContainerBar];
-    [self addSubview:self.bottomContainerBar];
-
-    [self.topContainerBar addSubview:self.cameraButton];
-    [self.topContainerBar addSubview:self.flashButton];
-    [self.topContainerBar addSubview:self.gridButton];
-
-    [self.bottomContainerBar addSubview:self.triggerButton];
-    [self.bottomContainerBar addSubview:self.closeButton];
-    [self.bottomContainerBar addSubview:self.photoLibraryButton];
+    [containerView addSubview:self.triggerButton];
+    [containerView addSubview:self.gridButton];
 
     [self createGesture];
 }
@@ -142,8 +147,8 @@
         _triggerButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_triggerButton setBackgroundColor:self.tintColor];
         [_triggerButton setImage:[UIImage imageInBundleNamed:@"trigger"] forState:UIControlStateNormal];
-        [_triggerButton setFrame:(CGRect){ 0, 0, 66, 66 }];
-        [_triggerButton.layer setCornerRadius:33.0f];
+        [_triggerButton setFrame:(CGRect){ 0, 0, 80, 80 }];
+        [_triggerButton.layer setCornerRadius:40.0f];
         [_triggerButton setCenter:(CGPoint){ CGRectGetMidX(self.bottomContainerBar.bounds), CGRectGetMidY(self.bottomContainerBar.bounds) }];
         [_triggerButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin];
         [_triggerButton addTarget:self action:@selector(triggerAction:) forControlEvents:UIControlEventTouchUpInside];
