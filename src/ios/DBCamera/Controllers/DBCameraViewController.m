@@ -128,8 +128,8 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if ( !self.customCamera )
-        [self checkForLibraryImage];
+//    if ( !self.customCamera )
+//        [self checkForLibraryImage];
 }
 
 - (void) viewWillDisappear:(BOOL)animated

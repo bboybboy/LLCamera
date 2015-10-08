@@ -659,6 +659,7 @@
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/DBCamera/DBCamera-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rnrmusic.DBCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -678,6 +679,7 @@
 				GCC_PREFIX_HEADER = "DBCamera/DBCamera-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/DBCamera/DBCamera-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rnrmusic.DBCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

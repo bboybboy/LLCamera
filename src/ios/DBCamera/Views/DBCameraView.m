@@ -92,9 +92,11 @@
     
     self.triggerButton.center = CGPointMake(containerView.frame.size.width / 2, containerView.frame.size.height / 2);
     self.gridButton.center = CGPointMake(containerView.frame.size.width / 2 - 70, containerView.frame.size.height / 2);
+    self.cameraButton.center = CGPointMake(containerView.frame.size.width / 2 + 70, containerView.frame.size.height / 2);
 
     [containerView addSubview:self.triggerButton];
     [containerView addSubview:self.gridButton];
+    [containerView addSubview:self.cameraButton];
 
     [self createGesture];
 }
