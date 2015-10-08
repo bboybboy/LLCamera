@@ -30,12 +30,10 @@
 static const CGSize kFilterCellSize = { 75, 90 };
 
 @interface DBCameraSegueViewController () <UIActionSheetDelegate, UICollectionViewDelegate, UICollectionViewDataSource> {
-    DBCameraCropView *_cropView;
     
+    DBCameraCropView *_cropView;
+
     NSArray *_cropArray, *_filtersList;
-//    GPUImageVignetteFilter *vignetteFilter;
-//    GPUImageFilterGroup *vignetteFilterGroup;
-//    GPUImageToneCurveFilter *vignetteToneCurveFilter;
     NSDictionary *_filterMapping;
     CGRect _pFrame, _lFrame;
 }
@@ -46,6 +44,7 @@ static const CGSize kFilterCellSize = { 75, 90 };
 @end
 
 @implementation DBCameraSegueViewController
+
 @synthesize forceQuadCrop = _forceQuadCrop;
 @synthesize useCameraSegue = _useCameraSegue;
 @synthesize tintColor = _tintColor;
@@ -56,57 +55,19 @@ static const CGSize kFilterCellSize = { 75, 90 };
 {
     self = [super init];
     if (self) {
-        // Custom initialization
-        
-//        [self initVignetteFilter];
-        
+
         _cropArray = @[ @320, @213, @240, @192, @180 ];
-//        _filtersList = @[ @"normal", @"1977", @"amaro", @"grey", @"hudson", @"mayfair", @"nashville", @"valencia", @"contrastgrey", @"vignette" ];
-        
-        NSBundle *bundle = [NSBundle bundleForClass:self.class];
-        NSURL *filter1977      = [NSURL fileURLWithPath:[bundle pathForResource:@"1977"      ofType:@"acv"]];
-        NSURL *filterAmaro     = [NSURL fileURLWithPath:[bundle pathForResource:@"amaro"     ofType:@"acv"]];
-        NSURL *filterHudson    = [NSURL fileURLWithPath:[bundle pathForResource:@"Hudson"    ofType:@"acv"]];
-        NSURL *filterMayfair   = [NSURL fileURLWithPath:[bundle pathForResource:@"mayfair"   ofType:@"acv"]];
-        NSURL *filterNashville = [NSURL fileURLWithPath:[bundle pathForResource:@"Nashville" ofType:@"acv"]];
-        NSURL *filterValencia  = [NSURL fileURLWithPath:[bundle pathForResource:@"1977"      ofType:@"acv"]];
-        
-        _filterMapping = @{ @0:[[GPUImageFilter alloc] init],
-                            @1:[[GPUImageToneCurveFilter alloc] initWithACVURL:filter1977],
-                            @2:[[GPUImageToneCurveFilter alloc] initWithACVURL:filterAmaro],
-                            @3:[[GPUImageGrayscaleFilter alloc] init],
-                            @4:[[GPUImageToneCurveFilter alloc] initWithACVURL:filterHudson],
-                            @5:[[GPUImageToneCurveFilter alloc] initWithACVURL:filterMayfair],
-                            @6:[[GPUImageToneCurveFilter alloc] initWithACVURL:filterNashville],
-                            @7:[[GPUImageToneCurveFilter alloc] initWithACVURL:filterValencia],
-                            @8:[[GrayscaleContrastFilter alloc] init],
-                            };
-        
+        _filterMapping = @{ @0:[[GPUImageFilter alloc] init] };
         _selectedFilterIndex = 0;
         
         [self setSourceImage:image];
         [self setPreviewImage:thumb];
         [self setCropRect:(CGRect){ 0, 320 }];
         [self setMinimumScale:.2];
-        [self setMaximumScale:10];
+        [self setMaximumScale:4];
         [self createInterface];
     }
     return self;
-}
-
-- (void)initVignetteFilter {
-//    vignetteFilter = [[GPUImageVignetteFilter alloc] init];
-//    NSBundle *bundle = [NSBundle bundleForClass:self.class];
-//    NSURL *vignetteFilterACVURL = [NSURL fileURLWithPath:[bundle pathForResource:@"Vignette" ofType:@"acv"]];
-//    vignetteToneCurveFilter = [[GPUImageToneCurveFilter alloc] initWithACVURL:vignetteFilterACVURL];
-//    vignetteFilterGroup = [[GPUImageFilterGroup alloc] init];
-//    
-//    [vignetteFilterGroup addFilter:vignetteToneCurveFilter];
-//    [vignetteFilterGroup addFilter:vignetteFilter];
-//    
-//    [vignetteToneCurveFilter addTarget:vignetteFilter];
-//    [vignetteFilterGroup setInitialFilters:[NSArray arrayWithObject:vignetteToneCurveFilter]];
-//    [vignetteFilterGroup setTerminalFilter:vignetteFilter];
 }
 
 - (void)viewDidLoad
@@ -123,7 +84,13 @@ static const CGSize kFilterCellSize = { 75, 90 };
     
     [self setCropRect:self.previewImage.size.width > self.previewImage.size.height ? _lFrame : _pFrame];
     
-    [self.view addSubview:self.filtersView];
+    NSLog(@"self w = %f", self.view.frame.size.width);
+    NSLog(@"self h = %f", self.view.frame.size.height);
+    
+    NSLog(@"calc Pframe = %@", NSStringFromCGRect(_pFrame));
+    NSLog(@"calc LFrame = %@", NSStringFromCGRect(_lFrame));
+    
+    
     [self.view addSubview:self.navigationBar];
     [self.view addSubview:self.bottomBar];
     [self.view setClipsToBounds:YES];
@@ -171,7 +138,7 @@ static const CGSize kFilterCellSize = { 75, 90 };
     CGFloat viewHeight = CGRectGetHeight([[UIScreen mainScreen] bounds]) - 64 - 40;
     _cropView = [[DBCameraCropView alloc] initWithFrame:(CGRect){ 0, 64, [[UIScreen mainScreen] bounds].size.width, viewHeight }];
     [_cropView setHidden:YES];
-    
+
     [self setFrameView:_cropView];
 }
 
@@ -225,17 +192,17 @@ static const CGSize kFilterCellSize = { 75, 90 };
     }
 }
 
-- (DBCameraFiltersView *) filtersView
-{
-    if ( !_filtersView ) {
-        _filtersView = [[DBCameraFiltersView alloc] initWithFrame:(CGRect){ 0, CGRectGetHeight(self.view.frame)-kFilterCellSize.height, CGRectGetWidth(self.view.frame), kFilterCellSize.height} collectionViewLayout:[DBCameraFiltersView filterLayout]];
-        [_filtersView setDelegate:self];
-        [_filtersView setDataSource:self];
-        [_filtersView registerClass:[DBCameraFilterCell class] forCellWithReuseIdentifier:kFilterCellIdentifier];
-    }
-    
-    return _filtersView;
-}
+//- (DBCameraFiltersView *) filtersView
+//{
+//    if ( !_filtersView ) {
+//        _filtersView = [[DBCameraFiltersView alloc] initWithFrame:(CGRect){ 0, CGRectGetHeight(self.view.frame)-kFilterCellSize.height, CGRectGetWidth(self.view.frame), kFilterCellSize.height} collectionViewLayout:[DBCameraFiltersView filterLayout]];
+//        [_filtersView setDelegate:self];
+//        [_filtersView setDataSource:self];
+//        [_filtersView registerClass:[DBCameraFilterCell class] forCellWithReuseIdentifier:kFilterCellIdentifier];
+//    }
+//    
+//    return _filtersView;
+//}
 
 - (DBCameraLoadingView *) loadingView
 {
@@ -339,43 +306,43 @@ static const CGSize kFilterCellSize = { 75, 90 };
     return YES;
 }
 
-#pragma mark - UICollectionViewDataSource
-
-- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return _filtersList.count;
-}
-
-- (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    DBCameraFilterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kFilterCellIdentifier forIndexPath:indexPath];
-    [cell.imageView setImage:[_filterMapping[@(indexPath.row)] imageByFilteringImage:self.previewImage]];
-    [cell.label setText:[_filtersList[indexPath.row] uppercaseString]];
-    [cell.imageView.layer setBorderWidth:(self.selectedFilterIndex.row == indexPath.row) ? 1.0 : 0.0];
-    
-    return cell;
-}
-
-- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return kFilterCellSize;
-}
-
-#pragma mark - UICollectionViewDelegate
-
-- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self.view addSubview:self.loadingView];
-    
-    _selectedFilterIndex = indexPath;
-    [self.filtersView reloadData];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIImage *filteredImage = [_filterMapping[@(indexPath.row)] imageByFilteringImage:self.sourceImage];
-        [self.loadingView removeFromSuperview];
-        [self.imageView setImage:filteredImage];
-    });
-}
+//#pragma mark - UICollectionViewDataSource
+//
+//- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+//{
+//    return _filtersList.count;
+//}
+//
+//- (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    DBCameraFilterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kFilterCellIdentifier forIndexPath:indexPath];
+//    [cell.imageView setImage:[_filterMapping[@(indexPath.row)] imageByFilteringImage:self.previewImage]];
+//    [cell.label setText:[_filtersList[indexPath.row] uppercaseString]];
+//    [cell.imageView.layer setBorderWidth:(self.selectedFilterIndex.row == indexPath.row) ? 1.0 : 0.0];
+//    
+//    return cell;
+//}
+//
+//- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return kFilterCellSize;
+//}
+//
+//#pragma mark - UICollectionViewDelegate
+//
+//- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [self.view addSubview:self.loadingView];
+//    
+//    _selectedFilterIndex = indexPath;
+//    [self.filtersView reloadData];
+//    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        UIImage *filteredImage = [_filterMapping[@(indexPath.row)] imageByFilteringImage:self.sourceImage];
+//        [self.loadingView removeFromSuperview];
+//        [self.imageView setImage:filteredImage];
+//    });
+//}
 
 #pragma mark - UIActionSheetDelegate
 
