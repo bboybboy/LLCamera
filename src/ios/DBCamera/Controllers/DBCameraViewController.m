@@ -206,7 +206,7 @@
         _cameraGridView = [[DBCameraGridView alloc] initWithFrame:camera.previewLayer.frame];
         [_cameraGridView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
         [_cameraGridView setNumberOfColumns:2];
-        [_cameraGridView setNumberOfRows:2];
+        [_cameraGridView setNumberOfRows:3];
         [_cameraGridView setAlpha:0];
     }
 

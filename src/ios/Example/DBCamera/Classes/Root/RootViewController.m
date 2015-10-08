@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 PSSD - Daniele Bogo. All rights reserved.
 //
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
 #import "RootViewController.h"
 #import "DemoNavigationController.h"
 #import "DBCameraViewController.h"
@@ -62,7 +65,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define kCellIdentifier @"CellIdentifier"
-#define kCameraTitles @[ @"Open Camera", @"Open Custom Camera", @"Open Camera without Segue", @"Open Camera without Container", @"Camera with force quad crop", @"Open Library Picker" ]
+#define kCameraTitles @[ @"Open Camera" ]
 
 typedef void (^TableRowBlock)();
 
@@ -139,8 +142,16 @@ typedef void (^TableRowBlock)();
 
     DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
     [cameraContainer setFullScreenMode];
+    [cameraContainer setSelectedTintColor:UIColorFromRGB(0x23BD74)];
     
     DemoNavigationController *nav = [[DemoNavigationController alloc] initWithRootViewController:cameraContainer];
+//    nav.navigationBar.barTintColor = [UIColor blackColor];
+//    nav.navigationBar.topItem.title = @"wow foto";
+//    [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0x23BD74)}];
+//    nav.navigationBar.topItem.backBarButtonItem = @"wow foto";
+//    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style: UIBarButtonItemStyleBordered target:self action:@selector(Back)];
+//    nav.navigationBar.topItem.leftBarButtonItem = backButton;
+//    self.navigationItem.leftBarButtonItem = backButton;
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -237,6 +248,11 @@ typedef void (^TableRowBlock)();
     [self.navigationController pushViewController:detail animated:NO];
     [cameraViewController restoreFullScreenMode];
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)Back
+{
+  [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

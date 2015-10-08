@@ -33,9 +33,9 @@ static const CGSize kFilterCellSize = { 75, 90 };
     DBCameraCropView *_cropView;
     
     NSArray *_cropArray, *_filtersList;
-    GPUImageVignetteFilter *vignetteFilter;
-    GPUImageFilterGroup *vignetteFilterGroup;
-    GPUImageToneCurveFilter *vignetteToneCurveFilter;
+//    GPUImageVignetteFilter *vignetteFilter;
+//    GPUImageFilterGroup *vignetteFilterGroup;
+//    GPUImageToneCurveFilter *vignetteToneCurveFilter;
     NSDictionary *_filterMapping;
     CGRect _pFrame, _lFrame;
 }
@@ -58,10 +58,10 @@ static const CGSize kFilterCellSize = { 75, 90 };
     if (self) {
         // Custom initialization
         
-        [self initVignetteFilter];
+//        [self initVignetteFilter];
         
         _cropArray = @[ @320, @213, @240, @192, @180 ];
-        _filtersList = @[ @"normal", @"1977", @"amaro", @"grey", @"hudson", @"mayfair", @"nashville", @"valencia", @"contrastgrey", @"vignette" ];
+//        _filtersList = @[ @"normal", @"1977", @"amaro", @"grey", @"hudson", @"mayfair", @"nashville", @"valencia", @"contrastgrey", @"vignette" ];
         
         NSBundle *bundle = [NSBundle bundleForClass:self.class];
         NSURL *filter1977      = [NSURL fileURLWithPath:[bundle pathForResource:@"1977"      ofType:@"acv"]];
@@ -80,7 +80,7 @@ static const CGSize kFilterCellSize = { 75, 90 };
                             @6:[[GPUImageToneCurveFilter alloc] initWithACVURL:filterNashville],
                             @7:[[GPUImageToneCurveFilter alloc] initWithACVURL:filterValencia],
                             @8:[[GrayscaleContrastFilter alloc] init],
-                            @9:vignetteFilterGroup};
+                            };
         
         _selectedFilterIndex = 0;
         
@@ -95,18 +95,18 @@ static const CGSize kFilterCellSize = { 75, 90 };
 }
 
 - (void)initVignetteFilter {
-    vignetteFilter = [[GPUImageVignetteFilter alloc] init];
-    NSBundle *bundle = [NSBundle bundleForClass:self.class];
-    NSURL *vignetteFilterACVURL = [NSURL fileURLWithPath:[bundle pathForResource:@"Vignette" ofType:@"acv"]];
-    vignetteToneCurveFilter = [[GPUImageToneCurveFilter alloc] initWithACVURL:vignetteFilterACVURL];
-    vignetteFilterGroup = [[GPUImageFilterGroup alloc] init];
-    
-    [vignetteFilterGroup addFilter:vignetteToneCurveFilter];
-    [vignetteFilterGroup addFilter:vignetteFilter];
-    
-    [vignetteToneCurveFilter addTarget:vignetteFilter];
-    [vignetteFilterGroup setInitialFilters:[NSArray arrayWithObject:vignetteToneCurveFilter]];
-    [vignetteFilterGroup setTerminalFilter:vignetteFilter];
+//    vignetteFilter = [[GPUImageVignetteFilter alloc] init];
+//    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+//    NSURL *vignetteFilterACVURL = [NSURL fileURLWithPath:[bundle pathForResource:@"Vignette" ofType:@"acv"]];
+//    vignetteToneCurveFilter = [[GPUImageToneCurveFilter alloc] initWithACVURL:vignetteFilterACVURL];
+//    vignetteFilterGroup = [[GPUImageFilterGroup alloc] init];
+//    
+//    [vignetteFilterGroup addFilter:vignetteToneCurveFilter];
+//    [vignetteFilterGroup addFilter:vignetteFilter];
+//    
+//    [vignetteToneCurveFilter addTarget:vignetteFilter];
+//    [vignetteFilterGroup setInitialFilters:[NSArray arrayWithObject:vignetteToneCurveFilter]];
+//    [vignetteFilterGroup setTerminalFilter:vignetteFilter];
 }
 
 - (void)viewDidLoad
