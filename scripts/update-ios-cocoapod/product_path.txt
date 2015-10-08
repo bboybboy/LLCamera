@@ -1,0 +1,1 @@
+/Users/android/Projects/LITS_test/Cordova-DBCamera/src/ios/vendor/libdbcamera.a

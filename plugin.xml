@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<plugin id='com.vulume.cordova.dbcamera' version='0.0.3' xmlns='http://apache.org/cordova/ns/plugins/1.0' xmlns:android='http://schemas.android.com/apk/res/android'>
+  <name>
+     dbcamera 
+  </name>
+  <description>
+     Plugman compatible wrapper for DBCamera. 
+  </description>
+  <author>
+     Chris Ewald, Vulume Inc. 
+  </author>
+  <keywords>
+     camera, ios 
+  </keywords>
+  <license>
+     MIT 
+  </license>
+  <js-module name='dbcamera' src='www/dbcamera.js'>
+    <clobbers target='cordova.plugins.dbcamera'/>
+  </js-module>
+  <platform name='ios'>
+    <config-file parent='/*' target='config.xml'>
+      <feature name='DBCamera'>
+        <param name='ios-package' value='CDVdbcamera'/>
+      </feature>
+    </config-file>
+    <source-file src='src/ios/CDVdbcamera.m'/>
+    <framework src='Foundation.framework' autogen='true'/>
+    <framework src='AVFoundation.framework' autogen='true'/>
+    <framework src='CoreMedia.framework' autogen='true'/>
+    <framework src='QuartzCore.framework' autogen='true'/>
+    <header-file src='src/ios/vendor/headers/UIImage+Asset.h' autogen='true'/>
+    <header-file src='src/ios/vendor/headers/UIImage+Bundle.h' autogen='true'/>
+    <header-file src='src/ios/vendor/headers/UIViewController+UIViewController_FullScreen.h' autogen='true'/>
+    <header-file src='src/ios/vendor/headers/DBCameraContainerViewController.h' autogen='true'/>
+    <header-file src='src/ios/vendor/headers/DBCameraViewController.h' autogen='true'/>
+    <header-file src='src/ios/vendor/headers/DBCameraDelegate.h' autogen='true'/>
+    <header-file src='src/ios/vendor/headers/DBCameraFilterCell.h' autogen='true'/>
+    <header-file src='src/ios/vendor/headers/DBMotionManager.h' autogen='true'/>
+    <header-file src='src/ios/vendor/headers/DBCameraFiltersView.h' autogen='true'/>
+    <header-file src='src/ios/vendor/headers/DBCameraLoadingView.h' autogen='true'/>
+    <header-file src='src/ios/vendor/headers/DBCameraView.h' autogen='true'/>
+    <header-file src='src/ios/vendor/headers/GrayscaleContrastFilter.h' autogen='true'/>
+    <resource-file src='src/ios/vendor/resources/DBCameraImages.xcassets' autogen='true'/>
+    <resource-file src='src/ios/vendor/resources/DBCamera.bundle' autogen='true'/>
+    <resource-file src='src/ios/vendor/resources/1977.acv' autogen='true'/>
+    <resource-file src='src/ios/vendor/resources/amaro.acv' autogen='true'/>
+    <resource-file src='src/ios/vendor/resources/Hudson.acv' autogen='true'/>
+    <resource-file src='src/ios/vendor/resources/mayfair.acv' autogen='true'/>
+    <resource-file src='src/ios/vendor/resources/Nashville.acv' autogen='true'/>
+    <resource-file src='src/ios/vendor/resources/Valencia.acv' autogen='true'/>
+    <resource-file src='src/ios/vendor/resources/Vignette.acv' autogen='true'/>
+    <source-file framework='true' src='src/ios/vendor/libdbcamera.a' autogen='true'/>
+  </platform>
+</plugin>
