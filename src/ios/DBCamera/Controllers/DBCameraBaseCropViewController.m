@@ -142,7 +142,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         w = h / sourceAspect;
     }
     
-    self.scale = 1;
+    self.scale = 1.38;
     self.minimumScale = 1;
     
     self.initialImageFrame = (CGRect){ CGRectGetMidX(self.cropRect) - w/2, CGRectGetMidY(self.cropRect) - h/2,w,h };
