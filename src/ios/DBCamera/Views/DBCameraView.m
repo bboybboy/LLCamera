@@ -20,6 +20,13 @@
 #define MAX_PINCH_SCALE_NUM   3.f
 #define MIN_PINCH_SCALE_NUM   1.f
 
+@interface DBCameraView ()
+
+@property (nonatomic, strong) UIView *navigationBar;
+@property (nonatomic, strong) UIButton *backButton;
+
+@end
+
 @implementation DBCameraView{
     CGFloat preScaleNum;
     CGFloat scaleNum;
@@ -99,6 +106,7 @@
     [containerView addSubview:self.triggerButton];
     [containerView addSubview:self.flashButton];
     [containerView addSubview:self.cameraButton];
+    [self addSubview:self.navigationBar];
 
     [self createGesture];
 }
@@ -245,6 +253,34 @@
     }
 
     return _exposeBox;
+}
+
+- (UIView *) navigationBar
+{
+    if ( !_navigationBar ) {
+        _navigationBar = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, [[UIScreen mainScreen] bounds].size.width, 64 }];
+        [_navigationBar setBackgroundColor:[UIColor colorWithRed:0.24 green:0.24 blue:0.27 alpha:1]];
+        [_navigationBar setUserInteractionEnabled:YES];
+        [_navigationBar addSubview:self.backButton];
+        
+        UIImageView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"WF_Logo"]];
+        logoView.center = CGPointMake(_navigationBar.frame.size.width / 2, _navigationBar.frame.size.height / 2);
+        [_navigationBar addSubview:logoView];
+    }
+    
+    return _navigationBar;
+}
+
+- (UIButton *) backButton
+{
+    if ( !_backButton ) {
+        _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 64)];
+        [_backButton setImage:[[UIImage imageNamed:@"Back icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        [_backButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+        _backButton.tintColor = [UIColor whiteColor];
+    }
+    
+    return _backButton;
 }
 
 - (void) draw:(CALayer *)layer atPointOfInterest:(CGPoint)point andRemove:(BOOL)remove
