@@ -2,18 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "flash.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "flash@2x.png"
+      "filename" : "WF_Logo.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "flash@3x.png"
+      "scale" : "3x"
     }
   ],
   "info" : {

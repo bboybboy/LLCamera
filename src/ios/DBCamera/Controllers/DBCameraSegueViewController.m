@@ -38,7 +38,7 @@
 }
 
 @property (nonatomic, strong) UIView *navigationBar, *bottomBar;
-@property (nonatomic, strong) UIButton *useButton, *retakeButton, *cropButton;
+@property (nonatomic, strong) UIButton *useButton, *retakeButton, *cropButton, *backButton;
 @property (nonatomic, strong) DBCameraLoadingView *loadingView;
 @end
 
@@ -209,12 +209,13 @@
 {
     if ( !_navigationBar ) {
         _navigationBar = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, [[UIScreen mainScreen] bounds].size.width, 64 }];
-        [_navigationBar setBackgroundColor:[UIColor clearColor]];
+        [_navigationBar setBackgroundColor:[UIColor colorWithRed:0.24 green:0.24 blue:0.27 alpha:1]];
         [_navigationBar setUserInteractionEnabled:YES];
-        [_navigationBar addSubview:self.useButton];
-        [_navigationBar addSubview:self.retakeButton];
-        if ( !_forceQuadCrop )
-            [_navigationBar addSubview:self.cropButton];
+        [_navigationBar addSubview:self.backButton];
+        
+        UIImageView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"WF_Logo"]];
+        logoView.center = CGPointMake(_navigationBar.frame.size.width / 2, _navigationBar.frame.size.height / 2);
+        [_navigationBar addSubview:logoView];
     }
     
     return _navigationBar;
@@ -223,18 +224,15 @@
 - (UIView *) bottomBar
 {
     if ( !_bottomBar ) {
-        _bottomBar = [[UIView alloc] initWithFrame:(CGRect){ 0, CGRectGetHeight([[UIScreen mainScreen] bounds]) - 40, [[UIScreen mainScreen] bounds].size.width, 40 }];
-        [_bottomBar setBackgroundColor:[UIColor clearColor]];
-        [_bottomBar setHidden:YES];
+        _bottomBar = [[UIView alloc] initWithFrame:(CGRect){ 0, CGRectGetHeight([[UIScreen mainScreen] bounds]) - 60, [[UIScreen mainScreen] bounds].size.width, 60 }];
+        [_bottomBar setBackgroundColor:[UIColor colorWithRed:0.24 green:0.24 blue:0.27 alpha:1]];
+        [_bottomBar setHidden:NO];
+        [_bottomBar addSubview:self.useButton];
+        [_bottomBar addSubview:self.retakeButton];
         
-        if ( !_forceQuadCrop ) {
-            UIButton *actionsheetButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [actionsheetButton setFrame:_bottomBar.bounds];
-            [actionsheetButton setBackgroundColor:[UIColor clearColor]];
-            [actionsheetButton setTitle:DBCameraLocalizedStrings(@"cropmode.title") forState:UIControlStateNormal];
-            [actionsheetButton addTarget:self action:@selector(openActionsheet:) forControlEvents:UIControlEventTouchUpInside];
-            [_bottomBar addSubview:actionsheetButton];
-        }
+        UIView *dividerView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2, 10, 1, 40)];
+        dividerView.backgroundColor = [UIColor colorWithWhite:0 alpha:.3];
+        [_bottomBar addSubview:dividerView];
     }
     
     return _bottomBar;
@@ -244,10 +242,10 @@
 {
     if ( !_useButton ) {
         _useButton = [self baseButton];
-        [_useButton setTitle:[DBCameraLocalizedStrings(@"button.use") uppercaseString] forState:UIControlStateNormal];
+        [_useButton setTitle:DBCameraLocalizedStrings(@"button.use")forState:UIControlStateNormal];
         [_useButton.titleLabel sizeToFit];
         [_useButton sizeToFit];
-        [_useButton setFrame:(CGRect){ CGRectGetWidth(self.view.frame) - (CGRectGetWidth(_useButton.frame) + buttonMargin), 0, CGRectGetWidth(_useButton.frame) + buttonMargin, 60 }];
+        [_useButton setFrame:(CGRect){self.view.frame.size.width / 2, 0, self.view.frame.size.width / 2, 60}];
         [_useButton addTarget:self action:@selector(saveImage) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -258,15 +256,29 @@
 {
     if ( !_retakeButton ) {
         _retakeButton = [self baseButton];
-        [_retakeButton setTitle:[DBCameraLocalizedStrings(@"button.retake") uppercaseString] forState:UIControlStateNormal];
+        [_retakeButton setTitle:DBCameraLocalizedStrings(@"button.retake") forState:UIControlStateNormal];
         [_retakeButton.titleLabel sizeToFit];
         [_retakeButton sizeToFit];
-        [_retakeButton setFrame:(CGRect){ 0, 0, CGRectGetWidth(_retakeButton.frame) + buttonMargin, 60 }];
+        [_retakeButton setFrame:(CGRect){0, 0, self.view.frame.size.width / 2, 60 }];
         [_retakeButton addTarget:self action:@selector(retakeImage) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _retakeButton;
 }
+
+- (UIButton *) backButton
+{
+    if ( !_backButton ) {
+        _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 64)];
+        [_backButton setImage:[[UIImage imageNamed:@"Back icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        [_backButton addTarget:self action:@selector(retakeImage) forControlEvents:UIControlEventTouchUpInside];
+        _backButton.tintColor = [UIColor whiteColor];
+    }
+    
+    return _backButton;
+}
+
+
 
 - (UIButton *) cropButton
 {
@@ -287,7 +299,7 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setBackgroundColor:[UIColor clearColor]];
     [button setTitleColor:self.tintColor forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont systemFontOfSize:12];
+    button.titleLabel.font = [UIFont systemFontOfSize:14];
     
     return button;
 }
@@ -296,6 +308,7 @@
 {
     return YES;
 }
+
 
 //#pragma mark - UICollectionViewDataSource
 //
