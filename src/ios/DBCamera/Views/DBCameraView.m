@@ -158,7 +158,7 @@
     if ( !_triggerButton ) {
         _triggerButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_triggerButton setBackgroundColor:self.selectedTintColor];
-        [_triggerButton setImage:[UIImage imageInBundleNamed:@"trigger"] forState:UIControlStateNormal];
+        [_triggerButton setImage:[UIImage imageInBundleNamed:@"photoShot"] forState:UIControlStateNormal];
         [_triggerButton setFrame:(CGRect){ 0, 0, 80, 80 }];
         [_triggerButton.layer setCornerRadius:40.0f];
         [_triggerButton setCenter:(CGPoint){ CGRectGetMidX(self.bottomContainerBar.bounds), CGRectGetMidY(self.bottomContainerBar.bounds) }];

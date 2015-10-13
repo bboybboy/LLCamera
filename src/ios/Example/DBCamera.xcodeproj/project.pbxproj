@@ -7,19 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		189DC46C1A4DD02A005F686B /* GrayscaleContrastFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 189DC46B1A4DD02A005F686B /* GrayscaleContrastFilter.m */; };
-		189DC46E1A4DD1FD005F686B /* Vignette.acv in Resources */ = {isa = PBXBuildFile; fileRef = 189DC46D1A4DD1FD005F686B /* Vignette.acv */; };
 		1AC0BF081B5721A500A73CEC /* UIImage+Bundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0BF071B5721A500A73CEC /* UIImage+Bundle.m */; };
 		653E218619474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 653E218519474DA2001433A5 /* UIViewController+UIViewController_FullScreen.m */; };
 		6548431C1958236B0008F803 /* DBCameraLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6548431B1958236B0008F803 /* DBCameraLoadingView.m */; };
 		655AA2B01955FA350017C143 /* CustomCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 655AA2AF1955FA350017C143 /* CustomCamera.m */; };
 		655AA2C21955FB040017C143 /* DBCameraImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2C11955FB040017C143 /* DBCameraImages.xcassets */; };
-		655AA2C51955FFC40017C143 /* 1977.acv in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2C41955FFC40017C143 /* 1977.acv */; };
-		655AA2CB195602340017C143 /* amaro.acv in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2C6195602340017C143 /* amaro.acv */; };
-		655AA2CC195602340017C143 /* Hudson.acv in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2C7195602340017C143 /* Hudson.acv */; };
-		655AA2CD195602340017C143 /* mayfair.acv in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2C8195602340017C143 /* mayfair.acv */; };
-		655AA2CE195602340017C143 /* Nashville.acv in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2C9195602340017C143 /* Nashville.acv */; };
-		655AA2CF195602340017C143 /* Valencia.acv in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2CA195602340017C143 /* Valencia.acv */; };
 		655AA2D61956DBD90017C143 /* AppResources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 655AA2D51956DBD90017C143 /* AppResources.xcassets */; };
 		6594EC041955D94E00E22EBD /* DBCameraFiltersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6594EC031955D94E00E22EBD /* DBCameraFiltersView.m */; };
 		6594EE0B1955F11500E22EBD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6594EE0A1955F11500E22EBD /* QuartzCore.framework */; };
@@ -58,9 +50,6 @@
 
 /* Begin PBXFileReference section */
 		1809A13E1A3F79560089855F /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		189DC46A1A4DD02A005F686B /* GrayscaleContrastFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrayscaleContrastFilter.h; sourceTree = "<group>"; };
-		189DC46B1A4DD02A005F686B /* GrayscaleContrastFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrayscaleContrastFilter.m; sourceTree = "<group>"; };
-		189DC46D1A4DD1FD005F686B /* Vignette.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Vignette.acv; sourceTree = "<group>"; };
 		1AC0BF061B5721A500A73CEC /* UIImage+Bundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Bundle.h"; sourceTree = "<group>"; };
 		1AC0BF071B5721A500A73CEC /* UIImage+Bundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Bundle.m"; sourceTree = "<group>"; };
 		4BE3F8BFBAFD401181A3E55F /* libPods-DBCamera.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DBCamera.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,12 +61,6 @@
 		655AA2AE1955FA350017C143 /* CustomCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCamera.h; path = Classes/CustomCamera/CustomCamera.h; sourceTree = "<group>"; };
 		655AA2AF1955FA350017C143 /* CustomCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCamera.m; path = Classes/CustomCamera/CustomCamera.m; sourceTree = "<group>"; };
 		655AA2C11955FB040017C143 /* DBCameraImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DBCameraImages.xcassets; sourceTree = "<group>"; };
-		655AA2C41955FFC40017C143 /* 1977.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1977.acv; sourceTree = "<group>"; };
-		655AA2C6195602340017C143 /* amaro.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = amaro.acv; sourceTree = "<group>"; };
-		655AA2C7195602340017C143 /* Hudson.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hudson.acv; sourceTree = "<group>"; };
-		655AA2C8195602340017C143 /* mayfair.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = mayfair.acv; sourceTree = "<group>"; };
-		655AA2C9195602340017C143 /* Nashville.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nashville.acv; sourceTree = "<group>"; };
-		655AA2CA195602340017C143 /* Valencia.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Valencia.acv; sourceTree = "<group>"; };
 		655AA2D51956DBD90017C143 /* AppResources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppResources.xcassets; sourceTree = "<group>"; };
 		6594EC021955D94E00E22EBD /* DBCameraFiltersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCameraFiltersView.h; sourceTree = "<group>"; };
 		6594EC031955D94E00E22EBD /* DBCameraFiltersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCameraFiltersView.m; sourceTree = "<group>"; };
@@ -172,31 +155,6 @@
 				F9DFA4FE58E901A1BE1FE253 /* Pods-DBCamera.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		655AA2C31955FFC40017C143 /* Filters */ = {
-			isa = PBXGroup;
-			children = (
-				189DC46A1A4DD02A005F686B /* GrayscaleContrastFilter.h */,
-				189DC46B1A4DD02A005F686B /* GrayscaleContrastFilter.m */,
-				655AA2D319564F250017C143 /* Curves */,
-			);
-			name = Filters;
-			path = ../../DBCamera/Filters;
-			sourceTree = "<group>";
-		};
-		655AA2D319564F250017C143 /* Curves */ = {
-			isa = PBXGroup;
-			children = (
-				189DC46D1A4DD1FD005F686B /* Vignette.acv */,
-				655AA2C41955FFC40017C143 /* 1977.acv */,
-				655AA2C6195602340017C143 /* amaro.acv */,
-				655AA2C7195602340017C143 /* Hudson.acv */,
-				655AA2C8195602340017C143 /* mayfair.acv */,
-				655AA2C9195602340017C143 /* Nashville.acv */,
-				655AA2CA195602340017C143 /* Valencia.acv */,
-			);
-			name = Curves;
 			sourceTree = "<group>";
 		};
 		655AA2D41956DB860017C143 /* Classes */ = {
@@ -384,7 +342,6 @@
 		9AB597D2189BB04B001BCAD3 /* DBCamera */ = {
 			isa = PBXGroup;
 			children = (
-				655AA2C31955FFC40017C143 /* Filters */,
 				9A1F4A8D191C20F10084C305 /* Resources */,
 				9A50C7A718AA423C00CD2DF3 /* Localizations */,
 				9A1F4A5A191C20CB0084C305 /* Categories */,
@@ -462,17 +419,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				655AA2C51955FFC40017C143 /* 1977.acv in Resources */,
-				189DC46E1A4DD1FD005F686B /* Vignette.acv in Resources */,
 				A7CB737F1B68107B0017336F /* DBCamera.bundle in Resources */,
 				655AA2D61956DBD90017C143 /* AppResources.xcassets in Resources */,
 				655AA2C21955FB040017C143 /* DBCameraImages.xcassets in Resources */,
-				655AA2CE195602340017C143 /* Nashville.acv in Resources */,
 				9AB597AE189BAF9A001BCAD3 /* InfoPlist.strings in Resources */,
-				655AA2CB195602340017C143 /* amaro.acv in Resources */,
-				655AA2CD195602340017C143 /* mayfair.acv in Resources */,
-				655AA2CC195602340017C143 /* Hudson.acv in Resources */,
-				655AA2CF195602340017C143 /* Valencia.acv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,7 +468,6 @@
 			files = (
 				9E8E34E51AFFABC600B451B1 /* (null) in Sources */,
 				9A1F4A87191C20CB0084C305 /* DBLibraryManager.m in Sources */,
-				189DC46C1A4DD02A005F686B /* GrayscaleContrastFilter.m in Sources */,
 				9A1F4A8B191C20CB0084C305 /* DBCameraGridView.m in Sources */,
 				9A1F4A83191C20CB0084C305 /* DBCameraLibraryViewController.m in Sources */,
 				9A1F4A88191C20CB0084C305 /* DBCollectionViewCell.m in Sources */,

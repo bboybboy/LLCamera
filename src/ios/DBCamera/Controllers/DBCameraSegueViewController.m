@@ -14,7 +14,6 @@
 #import "DBCameraLoadingView.h"
 #import "UIImage+TintColor.h"
 #import "UIImage+Bundle.h"
-#import "GrayscaleContrastFilter.h"
 
 #import <GPUImage/GPUImage.h>
 
