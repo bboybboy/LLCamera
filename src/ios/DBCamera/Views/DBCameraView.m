@@ -187,8 +187,7 @@
     if ( !_cameraButton ) {
         _cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_cameraButton setBackgroundColor:[UIColor clearColor]];
-        [_cameraButton setImage:[[UIImage imageInBundleNamed:@"flip"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
-        [_cameraButton setImage:[[UIImage imageInBundleNamed:@"flip"] tintImageWithColor:self.selectedTintColor] forState:UIControlStateSelected];
+        [_cameraButton setImage:[[UIImage imageInBundleNamed:@"switchCamera"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
         [_cameraButton setFrame:(CGRect){ 25, 17.5f, 30, 30 }];
         [_cameraButton addTarget:self action:@selector(changeCamera:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -201,7 +200,7 @@
     if ( !_flashButton ) {
         _flashButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_flashButton setBackgroundColor:[UIColor clearColor]];
-        [_flashButton setImage:[[UIImage imageInBundleNamed:@"flash"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
+        [_flashButton setImage:[[UIImage imageInBundleNamed:@"flashOff"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
         [_flashButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 55, 17.5f, 30, 30 }];
         [_flashButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
         [_flashButton addTarget:self action:@selector(flashTriggerAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -371,21 +370,21 @@
 {
     if ( [_delegate respondsToSelector:@selector(triggerFlashForMode:)] ) {
         
-        switch (self -> flashMode) {
+        switch (flashMode) {
             case AVCaptureFlashModeOff:
-                [button setImage:[[UIImage imageInBundleNamed:@"flash"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
-                self -> flashMode = AVCaptureFlashModeOn;
+                [button setImage:[[UIImage imageInBundleNamed:@"flashOn"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
+                flashMode = AVCaptureFlashModeOn;
                 break;
             case AVCaptureFlashModeOn:
-                [button setImage:[[UIImage imageInBundleNamed:@"flash"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
-                self -> flashMode = AVCaptureFlashModeAuto;
+                [button setImage:[[UIImage imageInBundleNamed:@"flashAuto"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
+                flashMode = AVCaptureFlashModeAuto;
                 break;
             case AVCaptureFlashModeAuto:
-                [button setImage:[[UIImage imageInBundleNamed:@"flash"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
-                self -> flashMode = AVCaptureFlashModeOff;
+                [button setImage:[[UIImage imageInBundleNamed:@"flashOff"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
+                flashMode = AVCaptureFlashModeOff;
                 break;
         }
-        [_delegate triggerFlashForMode:self -> flashMode];
+        [_delegate triggerFlashForMode:flashMode];
     }
 }
 
