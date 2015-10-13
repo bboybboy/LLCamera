@@ -24,7 +24,7 @@
         <param name='ios-package' value='CDVdbcamera'/>
       </feature>
     </config-file>
-    <source-file src='src/ios/CDVdbcamera.m'/>
+    <source-file src='src/ios/DBCamera/CDVdbcamera.m'/>
     <framework src='Foundation.framework' autogen='true'/>
     <framework src='AVFoundation.framework' autogen='true'/>
     <framework src='CoreMedia.framework' autogen='true'/>
