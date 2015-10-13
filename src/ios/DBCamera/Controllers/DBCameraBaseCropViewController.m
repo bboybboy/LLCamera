@@ -142,10 +142,12 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         w = h / sourceAspect;
     }
     
-    self.scale = 1.38;
+//    self.scale = [UIScreen mainScreen].bounds.size.height / [UIScreen mainScreen].bounds.size.width;
+    self.scale = self.sourceImage.size.height / self.sourceImage.size.width;
+    
     self.minimumScale = 1;
     
-    self.initialImageFrame = (CGRect){ CGRectGetMidX(self.cropRect) - w/2, CGRectGetMidY(self.cropRect) - h/2,w,h };
+    self.initialImageFrame = (CGRect){ CGRectGetMidX(self.cropRect) - w/2, CGRectGetMidY(self.cropRect) - h/2,w,h};
     self.validTransform = CGAffineTransformMakeScale(self.scale, self.scale);
     
     void (^doReset)(void) = ^{

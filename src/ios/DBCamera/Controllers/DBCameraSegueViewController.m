@@ -83,13 +83,6 @@
     
     [self setCropRect:self.previewImage.size.width > self.previewImage.size.height ? _lFrame : _pFrame];
     
-    NSLog(@"self w = %f", self.view.frame.size.width);
-    NSLog(@"self h = %f", self.view.frame.size.height);
-    
-    NSLog(@"calc Pframe = %@", NSStringFromCGRect(_pFrame));
-    NSLog(@"calc LFrame = %@", NSStringFromCGRect(_lFrame));
-    
-    
     [self.view addSubview:self.navigationBar];
     [self.view addSubview:self.bottomBar];
     [self.view setClipsToBounds:YES];
