@@ -36,7 +36,6 @@
     <header-file src='src/ios/DBCamera/Controllers/DBCameraViewController.h' autogen='true'/>
     <header-file src='src/ios/DBCamera/Headers/DBCameraDelegate.h' autogen='true'/>
     <header-file src='src/ios/DBCamera/Objects/DBCameraFilterCell.h' autogen='true'/>
-    <header-file src='src/ios/DBCamera/Managers/DBMotionManager.h' autogen='true'/>
     <header-file src='src/ios/DBCamera/Views/DBCameraFiltersView.h' autogen='true'/>
     <header-file src='src/ios/DBCamera/Views/DBCameraLoadingView.h' autogen='true'/>
     <header-file src='src/ios/DBCamera/Views/DBCameraView.h' autogen='true'/>
