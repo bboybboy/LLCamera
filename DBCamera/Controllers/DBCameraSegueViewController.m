@@ -15,8 +15,6 @@
 #import "UIImage+TintColor.h"
 #import "UIImage+Bundle.h"
 
-#import <GPUImage/GPUImage.h>
-
 #define kFilterCellIdentifier @"filterCell"
 
 #ifndef DBCameraLocalizedStrings
@@ -32,13 +30,13 @@
     DBCameraCropView *_cropView;
 
     NSArray *_cropArray, *_filtersList;
-    NSDictionary *_filterMapping;
     CGRect _pFrame, _lFrame;
 }
 
 @property (nonatomic, strong) UIView *navigationBar, *bottomBar;
 @property (nonatomic, strong) UIButton *useButton, *retakeButton, *cropButton, *backButton;
 @property (nonatomic, strong) DBCameraLoadingView *loadingView;
+
 @end
 
 @implementation DBCameraSegueViewController
@@ -55,7 +53,6 @@
     if (self) {
 
         _cropArray = @[ @320, @213, @240, @192, @180 ];
-        _filterMapping = @{ @0:[[GPUImageFilter alloc] init] };
         _selectedFilterIndex = 0;
         
         [self setSourceImage:image];
@@ -145,8 +142,8 @@
         if ( _cropMode )
             [self cropImage];
         else {
-            UIImage *transform = [_filterMapping[@(_selectedFilterIndex.row)] imageByFilteringImage:self.sourceImage];
-            [_delegate camera:self didFinishWithImage:transform withMetadata:self.capturedImageMetadata];
+//            UIImage *transform = [_filterMapping[@(_selectedFilterIndex.row)] imageByFilteringImage:self.sourceImage];
+            [_delegate camera:self didFinishWithImage:self.sourceImage withMetadata:self.capturedImageMetadata];
         }
     }
 }
@@ -164,7 +161,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *transform =  [UIImage imageWithCGImage:resultRef scale:1.0 orientation:UIImageOrientationUp];
             CGImageRelease(resultRef);
-            transform = [_filterMapping[@(_selectedFilterIndex.row)] imageByFilteringImage:transform];
+//            transform = [_filterMapping[@(_selectedFilterIndex.row)] imageByFilteringImage:transform];
             [_delegate camera:self didFinishWithImage:transform withMetadata:self.capturedImageMetadata];
         });
     });
