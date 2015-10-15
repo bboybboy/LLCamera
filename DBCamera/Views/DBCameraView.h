@@ -95,6 +95,8 @@
  */
 @property (nonatomic, strong) UIPinchGestureRecognizer *pinch;
 
+@property (nonatomic, assign) BOOL hasFlash;
+
 /**
  *  Class method to create the view with a frame
  *

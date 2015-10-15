@@ -204,6 +204,7 @@
         [_flashButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 55, 17.5f, 30, 30 }];
         [_flashButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
         [_flashButton addTarget:self action:@selector(flashTriggerAction:) forControlEvents:UIControlEventTouchUpInside];
+        if (![self checkFlash]) [_flashButton setEnabled:NO];
     }
 
     return _flashButton;
@@ -370,6 +371,7 @@
 {
     if ( [_delegate respondsToSelector:@selector(triggerFlashForMode:)] ) {
         
+        
         switch (flashMode) {
             case AVCaptureFlashModeOff:
                 [button setImage:[[UIImage imageInBundleNamed:@"flashOn"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
@@ -517,6 +519,35 @@
         [_previewLayer setAffineTransform:CGAffineTransformMakeScale(scaleNum, scaleNum)];
         [CATransaction commit];
     }
+}
+
+- (BOOL) checkFlash {
+    AVCaptureDevice* d = nil;
+    
+    // find a device by position
+    NSArray* allDevices = [AVCaptureDevice devices];
+    for (AVCaptureDevice* currentDevice in allDevices) {
+        if (currentDevice.position == AVCaptureDevicePositionBack) {
+            d = currentDevice;
+        }
+    }
+    
+    // at this point, d may still be nil, assuming we found something we like....
+    
+    NSError* err = nil;
+    BOOL lockAcquired = [d lockForConfiguration:&err];
+    
+    if (!lockAcquired) {
+        // log err and handle...
+    } else {
+        // flip on the flash mode
+        if ([d hasFlash] && [d isFlashModeSupported:AVCaptureFlashModeOn] ) {
+            [d setFlashMode:AVCaptureFlashModeOn];
+        }
+        
+        [d unlockForConfiguration];
+    }
+    return [d hasFlash] && [d isFlashModeSupported:AVCaptureFlashModeOn];
 }
 
 @end

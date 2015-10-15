@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Daniele Bogo. All rights reserved.
 //
 
+#define IPAD     UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
+
 #import "DBCameraBaseCropViewController.h"
 
 typedef struct {
@@ -143,7 +145,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     }
     
 //    self.scale = [UIScreen mainScreen].bounds.size.height / [UIScreen mainScreen].bounds.size.width;
-    self.scale = self.sourceImage.size.height / self.sourceImage.size.width;
+    
+    // Oups
+    self.scale = IPAD ? 2.5 : self.sourceImage.size.height / self.sourceImage.size.width;
     
     self.minimumScale = 1;
     
