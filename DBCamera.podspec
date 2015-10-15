@@ -14,5 +14,4 @@ Pod::Spec.new do |s|
   s.resources = ['DBCamera/Resources/*.{xib,xcassets}', 'DBCamera/Localizations/DBCamera.bundle']
   s.framework = 'AVFoundation', 'CoreMedia', 'QuartzCore'
   s.requires_arc = true
-  s.dependency 'GPUImage', '~> 0.1'
 end
