@@ -71,9 +71,11 @@
 
         self.tintColor = [UIColor whiteColor];
         self.selectedTintColor = [UIColor redColor];
-        self->flashMode = AVCaptureFlashModeOff;
+        
     }
-
+    flashMode = AVCaptureFlashModeOff;
+    [_delegate triggerFlashForMode:flashMode];
+    
     return self;
 }
 
