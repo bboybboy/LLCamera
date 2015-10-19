@@ -210,7 +210,11 @@
         [_navigationBar addSubview:self.backButton];
         
         UIImageView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"WF_Logo"]];
+        CGRect viewFrame = logoView.frame;
+        viewFrame.size.height -= 10;
+        logoView.frame = viewFrame;
         logoView.center = CGPointMake(_navigationBar.frame.size.width / 2, _navigationBar.frame.size.height / 2);
+        logoView.contentMode = UIViewContentModeScaleAspectFit;
         [_navigationBar addSubview:logoView];
     }
     
