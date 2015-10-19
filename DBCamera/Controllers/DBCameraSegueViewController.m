@@ -204,7 +204,7 @@
 - (UIView *) navigationBar
 {
     if ( !_navigationBar ) {
-        _navigationBar = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, [[UIScreen mainScreen] bounds].size.width, 64 }];
+        _navigationBar = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, [[UIScreen mainScreen] bounds].size.width, 52 }];
         [_navigationBar setBackgroundColor:[UIColor colorWithRed:0.24 green:0.24 blue:0.27 alpha:1]];
         [_navigationBar setUserInteractionEnabled:YES];
         [_navigationBar addSubview:self.backButton];
@@ -265,7 +265,7 @@
 - (UIButton *) backButton
 {
     if ( !_backButton ) {
-        _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 64)];
+        _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 52)];
         [_backButton setImage:[[UIImage imageNamed:@"Back icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
         [_backButton addTarget:self action:@selector(retakeImage) forControlEvents:UIControlEventTouchUpInside];
         _backButton.tintColor = [UIColor whiteColor];

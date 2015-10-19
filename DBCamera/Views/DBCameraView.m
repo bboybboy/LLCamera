@@ -71,11 +71,7 @@
 
         self.tintColor = [UIColor whiteColor];
         self.selectedTintColor = [UIColor redColor];
-        
     }
-    flashMode = AVCaptureFlashModeOff;
-    [_delegate triggerFlashForMode:flashMode];
-    
     return self;
 }
 
@@ -207,6 +203,7 @@
         [_flashButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
         [_flashButton addTarget:self action:@selector(flashTriggerAction:) forControlEvents:UIControlEventTouchUpInside];
         if (![self checkFlash]) [_flashButton setEnabled:NO];
+        [_delegate triggerFlashForMode:AVCaptureFlashModeOff];
     }
 
     return _flashButton;
@@ -260,7 +257,7 @@
 - (UIView *) navigationBar
 {
     if ( !_navigationBar ) {
-        _navigationBar = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, [[UIScreen mainScreen] bounds].size.width, 64 }];
+        _navigationBar = [[UIView alloc] initWithFrame:(CGRect){ 0, 0, [[UIScreen mainScreen] bounds].size.width, 52 }];
         [_navigationBar setBackgroundColor:[UIColor colorWithRed:0.24 green:0.24 blue:0.27 alpha:1]];
         [_navigationBar setUserInteractionEnabled:YES];
         [_navigationBar addSubview:self.backButton];
@@ -276,7 +273,7 @@
 - (UIButton *) backButton
 {
     if ( !_backButton ) {
-        _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 64)];
+        _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 52)];
         [_backButton setImage:[[UIImage imageNamed:@"Back icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
         [_backButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
         _backButton.tintColor = [UIColor whiteColor];
@@ -544,7 +541,7 @@
     } else {
         // flip on the flash mode
         if ([d hasFlash] && [d isFlashModeSupported:AVCaptureFlashModeOn] ) {
-            [d setFlashMode:AVCaptureFlashModeOn];
+            [d setFlashMode:AVCaptureFlashModeOff];
         }
         
         [d unlockForConfiguration];
