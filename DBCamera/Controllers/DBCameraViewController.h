@@ -18,7 +18,7 @@
 /**
  *  DBCameraViewController
  */
-@interface DBCameraViewController : UIViewController <DBCameraSegueSettings, DBCameraViewControllerSettings>
+@interface DBCameraViewController : UIViewController <DBCameraSegueSettings, DBCameraViewControllerSettings, UIAlertViewDelegate>
 /**
  *  An id object compliant with the DBCameraViewControllerDelegate
  */

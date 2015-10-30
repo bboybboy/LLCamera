@@ -389,9 +389,9 @@
         if (status == AVAuthorizationStatusDenied || status == AVAuthorizationStatusRestricted) {
             [[[UIAlertView alloc] initWithTitle:DBCameraLocalizedStrings(@"general.error.title")
                                         message:DBCameraLocalizedStrings(@"cameraimage.nopolicy")
-                                       delegate:nil
+                                       delegate:self
                               cancelButtonTitle:@"Ok"
-                              otherButtonTitles:nil, nil] show];
+                              otherButtonTitles:@"Go to settings", nil] show];
 
             return;
         }
@@ -403,6 +403,12 @@
     }
 
     [self.cameraManager captureImageForDeviceOrientation:_deviceOrientation];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Go to settings"]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    }
 }
 
 - (void) cameraView:(UIView *)camera focusAtPoint:(CGPoint)point
