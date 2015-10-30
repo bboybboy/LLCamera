@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
   s.source = { :git => 'https://github.com/bboybboy/LLCamera.git' }
   s.source_files = 'DBCamera/Categories/*.{h,m}', 'DBCamera/Controllers/*.{h,m}', 'DBCamera/Headers/*.{h,m}', 'DBCamera/Managers/*.{h,m}', 'DBCamera/Objects/*.{h,m}', 'DBCamera/Views/*.{h,m}', 'DBCamera/Filters/*.{h,m}'
   s.resources = ['DBCamera/Resources/*.{xib,xcassets}', 'DBCamera/Localizations/DBCamera.bundle']
-  s.framework = 'AVFoundation', 'CoreMedia', 'QuartzCore'
+  s.frameworks = 'AVFoundation', 'CoreMedia', 'QuartzCore'
   s.requires_arc = true
 end
