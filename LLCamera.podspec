@@ -10,8 +10,8 @@ Pod::Spec.new do |s|
   s.social_media_url   = "http://google.com"
   s.platform = :ios, '8.0'
   s.source = { :git => 'https://github.com/bboybboy/LLCamera.git' }
-  s.source_files = 'DBCamera/Categories/*.{h,m}', 'DBCamera/Controllers/*.{h,m}', 'DBCamera/Headers/*.{h,m}', 'DBCamera/Managers/*.{h,m}', 'DBCamera/Objects/*.{h,m}', 'DBCamera/Views/*.{h,m}', 'DBCamera/Filters/*.{h,m}'
-  s.resources = ['DBCamera/Resources/*.{xib,xcassets}', 'DBCamera/Localizations/DBCamera.bundle']
+  s.source_files = 'LLCamera/Categories/*.{h,m}', 'LLCamera/Controllers/*.{h,m}', 'LLCamera/Headers/*.{h,m}', 'LLCamera/Managers/*.{h,m}', 'LLCamera/Objects/*.{h,m}', 'LLCamera/Views/*.{h,m}', 'LLCamera/Filters/*.{h,m}'
+  s.resources = ['LLCamera/Resources/*.{xib,xcassets}', 'LLCamera/Localizations/LLCamera.bundle']
   s.frameworks = 'AVFoundation', 'CoreMedia', 'QuartzCore'
   s.requires_arc = true
 end
