@@ -6,7 +6,6 @@ Pod::Spec.new do |s|
                    DESC
   s.homepage     = "https://github.com/bboybboy/LLCamera"
   s.license      = "MIT"
-  s.author             = { "Vadik Kovalsky" => "kovalsky.v@gmail.com" }
   s.social_media_url   = "http://google.com"
   s.platform = :ios, '8.0'
   s.source = { :git => 'https://github.com/bboybboy/LLCamera.git' }
